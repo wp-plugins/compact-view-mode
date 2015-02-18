@@ -2,7 +2,7 @@
 /**
  * Plugin Name: Compact View Mode
  * Description: View your post list in a more precise and compact way.
- * Version: 0.3.0
+ * Version: 0.3.1
  * Author: Frankie Jarrett
  * Author URI: http://frankiejarrett.com
  * License: GPLv2+
@@ -34,6 +34,12 @@ function cvm_is_compact() {
  * @return void
  */
 function cvm_edit_screen_js() {
+	global $typenow;
+
+	if ( 'post' !== $typenow ) {
+		return;
+	}
+
 	$compact_url = add_query_arg( array( 'mode' => 'compact' ) );
 	?>
 	<script>
